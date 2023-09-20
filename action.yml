@@ -1,6 +1,6 @@
 name: 'Create artifact tag'
 
-description: 'Outputs a string value for use as an artifact tag, intended for a Docker image or directory name. The output is dependent on whether this is a main build or a release creation event.'
+description: 'Outputs a string value for use as an artifact tag'
 
 branding:
   icon: 'tag'
