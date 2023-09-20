@@ -7,7 +7,7 @@ branding:
   color: 'white'
 
 outputs:
-  artifact-tag:
+  tag:
     description: 'Artifact tag'
     value: ${{ steps.artifact-tag-generator.outputs.tag }}
 
