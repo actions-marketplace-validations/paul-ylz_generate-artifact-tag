@@ -4,6 +4,7 @@ description: 'Outputs a string value for use as an image tag. The output is depe
 
 branding:
   icon: 'tag'
+  color: 'white'
 
 outputs:
   image-tag:
