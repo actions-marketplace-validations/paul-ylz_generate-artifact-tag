@@ -2,6 +2,9 @@ name: 'Create image tag'
 
 description: 'Outputs a string value for use as an image tag. The output is dependent on whether this is a dev build or a release.'
 
+branding:
+  icon: 'tag'
+
 outputs:
   image-tag:
     description: 'Image tag'
