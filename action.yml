@@ -1,1 +1,31 @@
+name: 'Create image tag'
 
+description: 'Outputs a string value for use as an image tag. The output is dependent on whether this is a dev build or a release.'
+
+outputs:
+  image-tag:
+    description: 'Image tag'
+    value: ${{ steps.image-tag-generator.outputs.image-tag }}
+
+runs:
+  using: "composite"
+  steps:
+    - id: image-tag-generator
+      run: |
+        set -euxo pipefail
+        
+        echo "GITHUB_REF: $GITHUB_REF"
+        echo "GITHUB_SHA: $GITHUB_SHA"
+        
+        if [ ${{ github.event_name }} = "release" ]
+        then
+          GIT_TAG_ONLY=$(echo $GITHUB_REF | sed "s|refs/tags/||")
+          IMAGE_TAG="${GIT_TAG_ONLY}"
+        
+        else
+          GITHUB_SHA_SHORT=$(echo $GITHUB_SHA | cut -c 1-8)
+          IMAGE_TAG="${{ github.run_number }}-${GITHUB_SHA_SHORT}"
+        fi
+        
+        echo "image-tag=$IMAGE_TAG" >> $GITHUB_OUTPUT
+      shell: bash
