@@ -1,5 +1,6 @@
 # generate-artifact-tag
-Github Actions' action to generate artifact tags based on build number and sha or release tag.
+Outputs a string value for use as an artifact tag, intended for a Docker image or directory name. 
+The output is dependent on whether this is a main build or a release creation event.
 
 ## Usage
 ```
